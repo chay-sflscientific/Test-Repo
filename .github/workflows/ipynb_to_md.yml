@@ -13,7 +13,7 @@ jobs:
       with:
         ref: ${{ github.head_ref }}
     - name: IPYNB to MD
-      uses: SFLScientific/IPYNB_to_MD@master
+      uses: chay-sflscientific/IPYNB_to_MD@Testing
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.5.0
       with:
