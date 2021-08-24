@@ -1,11 +1,6 @@
 
 # action.yml
 name: 'Preamble Update'
-on:
-  push:
-    branches-ignore: template-action-updates
-    paths:
-      - '**.py'
 description: "Updates the preamble for scripts that are modified and pushed to GitHub"
 runs:
   using: 'docker'
