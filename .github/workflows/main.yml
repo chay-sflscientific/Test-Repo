@@ -10,11 +10,11 @@ jobs:
         uses: chay-sflscientific/Test-Repo@main
       # Use the output from the `hello` step
       - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3.10.0
-      with:
-        commit-message: PR with updated preamble
-        committer: AutoCommit <example@users.noreply.github.com>
-        title: File preamble addition
-        body: This is an auto-generated PR
-        labels: preamble, automated pr
-        branch: ${{ format('preamble_{0}', github.head_ref) }}
+        uses: peter-evans/create-pull-request@v3.10.0
+        with:
+          commit-message: PR with updated preamble
+          committer: AutoCommit <example@users.noreply.github.com>
+          title: File preamble addition
+          body: This is an auto-generated PR
+          labels: preamble, automated pr
+          branch: ${{ format('preamble_{0}', github.head_ref) }}
