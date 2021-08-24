@@ -1,5 +1,10 @@
 
 # action.yml
+on:
+  push:
+    branches:
+      - main 
+
 name: 'Preamble Update'
 description: "Updates the preamble for scripts that are modified and pushed to GitHub"
 runs:
