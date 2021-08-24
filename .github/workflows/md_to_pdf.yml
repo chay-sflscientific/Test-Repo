@@ -27,7 +27,6 @@ jobs:
     - name: Remove .pdf.orig files
       run: for pdf in $(find | grep ".pdf.orig"); do rm $pdf; done  
     - name: Create Pull Request
-      id: cpr
       uses: peter-evans/create-pull-request@v3.10.0
       with:
         commit-message: PR with converted to PDF
@@ -36,9 +35,3 @@ jobs:
         body: This is an auto-generated PR
         labels: pdfs, automated pr
         branch: ${{ format('md-to-pdf_{0}', github.head_ref) }}
-    - name: Merge Pull Request
-      uses: juliangruber/merge-pull-request-action@v1
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        number: ${{ steps.cpr.outputs.pull-request-number }}
-        method: squash
