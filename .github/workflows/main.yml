@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Preamble addition step
         id: preamble
-        uses: chay-sflscientific/Test-Repo@main
+        uses: chay-sflscientific/Preamble-Repo@main
       # Use the output from the `hello` step
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.10.0
