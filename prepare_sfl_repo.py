@@ -182,4 +182,4 @@ class Preamble:
 
 if __name__ == "__main__":
     preamble = Preamble()
-    preamble.main(sys.argv[0])
+    preamble.main("/github/workspace")
