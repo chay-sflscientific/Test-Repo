@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to edit preamble
     steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - name: Preamble addition step
         id: preamble
         uses: chay-sflscientific/Preamble-Repo@main
