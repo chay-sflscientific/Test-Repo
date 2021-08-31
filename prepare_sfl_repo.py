@@ -100,6 +100,7 @@ class Preamble:
 
 
     def main(self, path, white_list=None, black_list=None):
+        print(path)
         auto_final_flag=self.AUTO_FINAL_LINE
         date_prefix=self.DATE_PREFIX
         preamble_fn=self.sfl_preamble
@@ -164,9 +165,9 @@ class Preamble:
             os.system(cmd)
 
             # if the old file and the previous backup are different by more than the date move the tmp file to backup
-       #     bkp = p + ".~backup~"
-       #     if self.is_diff_skip(tmp, bkp):
-       #         shutil.copyfile(tmp, bkp)
+            bkp = p + ".~backup~"
+            if self.is_diff_skip(tmp, bkp):
+                shutil.copyfile(tmp, bkp)
 
             #SANITY CHECK THAT THE NEW FILE p & TEMP FILE tmp differ only by DATE
          #   if self.is_diff_skip(p, tmp):
