@@ -164,14 +164,14 @@ class Preamble:
             os.system(cmd)
 
             # if the old file and the previous backup are different by more than the date move the tmp file to backup
-            bkp = p + ".~backup~"
-            if self.is_diff_skip(tmp, bkp):
-                shutil.copyfile(tmp, bkp)
+       #     bkp = p + ".~backup~"
+       #     if self.is_diff_skip(tmp, bkp):
+       #         shutil.copyfile(tmp, bkp)
 
             #SANITY CHECK THAT THE NEW FILE p & TEMP FILE tmp differ only by DATE
-            if self.is_diff_skip(p, tmp):
-              shutil.copyfile(tmp, p)
-              raise Exception("REVERTING! Something was modified in the new file that wasn't the date...")
+         #   if self.is_diff_skip(p, tmp):
+         #     shutil.copyfile(tmp, p)
+         #     raise Exception("REVERTING! Something was modified in the new file that wasn't the date...")
 
             # remove the temp file
             os.remove(tmp)
