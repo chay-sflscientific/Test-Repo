@@ -122,7 +122,9 @@ class Preamble:
         preamble_fn=self.sfl_preamble
         #raise Exception(path)
 
+        print(path)
         for p in glob.glob(path, recursive=True):
+            print(p)
             if self.skip(p, white_list, black_list):
                 continue
 
