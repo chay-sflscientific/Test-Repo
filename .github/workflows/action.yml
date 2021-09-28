@@ -1,0 +1,7 @@
+
+# action.yml
+name: 'Preamble Update'
+description: "Updates the preamble for scripts that are modified and pushed to GitHub"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
