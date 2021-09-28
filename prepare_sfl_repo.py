@@ -120,7 +120,7 @@ class Preamble:
         auto_final_flag=self.AUTO_FINAL_LINE
         date_prefix=self.DATE_PREFIX
         preamble_fn=self.sfl_preamble
-        raise Exception(path)
+        #raise Exception(path)
 
         for p in glob.glob(path, recursive=True):
             if self.skip(p, white_list, black_list):
