@@ -3,12 +3,12 @@
 # |  _/ |_| (_) || | \__ \
 # |_| |____\___/ |_| |___/
 #
+import metrics
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
 sys.path.append("../utils")
-import metrics
 
 
 def learning_curve(

@@ -32,7 +32,6 @@ class Trainer(object):
 
     @classmethod
     def train(cls, model, train_dataset, validate_dataset, **kwargs):
-
         """
         Model Training Example Pipeline
 

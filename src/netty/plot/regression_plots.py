@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 """
 
-   ___ _      _   ___ ___ ___ ___ ___ ___   _   ___ _____ ___  _  _ 
+   ___ _      _   ___ ___ ___ ___ ___ ___   _   ___ _____ ___  _  _
   / __| |   /_\ / __/ __|_ _| __|_ _/ __| /_\ |_ _|_   _/ _ \| \| |
  | (__| |__ / _ \\__ \__ \| || _| | | (__ / _ \ | |  | || (_) | .` |
   \___|____/_/ \_\___/___/___|_| |___\___/_/ \_\___| |_| \___/|_|\_|
-                                                                    
-																	
+
+
 	SFL Regression Validation module
-	
+
 		- mainly for regression validation
-		
-	
+
+
 	SFL Scientific 19.AUG.18
 """
 import pandas as pd
@@ -134,7 +134,7 @@ def scatter_plot(
 
 
 def regression_scatter_plot(truth, prediction):
-    """ Display a scatter plot of actual vs predicted values, along with mae/r2/rmse scores """
+    """Display a scatter plot of actual vs predicted values, along with mae/r2/rmse scores"""
     regression_result = pd.DataFrame({"Truth": truth, "Prediction": prediction})
     scatter_plot(
         regression_result,

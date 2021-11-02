@@ -182,7 +182,7 @@ def actual_v_predictions_plot(
     ax.set_title(title)
     try:
         plt.gca().add_artist(legend1)
-    except:
+    except BaseException:
         pass
     if save:
         #         plt.subplots_adjust(top=0.88, left=0.1, right=0.9)

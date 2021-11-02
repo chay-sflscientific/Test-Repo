@@ -6,6 +6,9 @@ just for illustrating basic SFL Template features.
 Delete this when you start working on your own SFL project.
 """
 
+from src import logger
+import dill
+import xgboost as xgb
 import re
 import os
 import ast
@@ -17,15 +20,11 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-import xgboost as xgb
-
-import dill
 
 # ------------------------------------------------------------------------------#
 #                                 LOGGER                                   #
 # ------------------------------------------------------------------------------#
 
-from src import logger
 
 # ------------------------------------------------------------------------------#
 #                                MODEL                                         #

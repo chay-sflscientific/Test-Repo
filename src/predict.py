@@ -6,11 +6,20 @@ just for illustrating basic SFL Template features.
 Update this when you start working on your own SFL project.
 """
 
+from src.models.xgb_model import ExampleModel
+from src.processes.transforms import (
+    ExampleTransform,
+)
+from src.processes.processor import ExampleProcessor
+from src.datasets.dataset import ExampleDataset
+from src.classes.transform import Transforms
+from src import logger, config
 import os
 import sys
 
 import warnings
 import pandas as pd
+
 warnings.filterwarnings("ignore")
 
 
@@ -18,20 +27,11 @@ warnings.filterwarnings("ignore")
 #                                 LOGGER                                   #
 # ------------------------------------------------------------------------------#
 
-from src import logger, config
 
 # ------------------------------------------------------------------------------#
 #                                 MODULE                                   #
 # ------------------------------------------------------------------------------#
 
-from src.classes.transform import Transforms
-from src.datasets.dataset import ExampleDataset
-from src.processes.processor import ExampleProcessor
-from src.processes.transforms import (
-    ExampleTransform,
-)
-
-from src.models.xgb_model import ExampleModel
 
 # ------------------------------------------------------------------------------#
 #                                 PARAMETERS                                   #
@@ -76,18 +76,18 @@ def predict():
     Create the project's inference pipeline.
     """
 
-    ## DS Initialization Placeholder
+    # DS Initialization Placeholder
     example_ds = ExampleDataset.from_path(
         path=RAW_DIR,
         training=True,
     )
     logger.info("[Inference]Iris Dataset Initlization Completed.")
 
-    ## Data Pipeline Process Placeholder
+    # Data Pipeline Process Placeholder
     example_ds = ExampleProcessor.process(example_ds, tfms=PREPROCESS_TRANSFORMS)
     logger.info("[Inference]Iris Dataset Processing Completed.")
 
-    ## Load classification model
+    # Load classification model
     example_model = ExampleModel.load(save_dir=MODEL_DIR)
     logger.info("[Inference]Model weight loading Completed.")
 

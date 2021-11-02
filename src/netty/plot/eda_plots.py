@@ -1,17 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-   ___ ___   _     ___ _    ___ _____ ___ 
+   ___ ___   _     ___ _    ___ _____ ___
  | __|   \ /_\   | _ \ |  / _ \_   _/ __|
  | _|| |) / _ \  |  _/ |_| (_) || | \__ \
  |___|___/_/ \_\ |_| |____\___/ |_| |___/
-										 
-											
+
+
 	SFL plotting module
-	
+
 		- mainly for EDA
 		- some exploratory plots for class distributions
-	
+
 	SFL Scientific updated 28.Feb.18
 """
 
@@ -44,12 +44,12 @@ def correlation_bar_graph(
     corr = df.corr()
 
     # If negative, invert correlation
-    if negative_corrs == True:
+    if negative_corrs:
         corr = corr * -1
 
     # Identify labels and values of top n features
     # If including the variable itself, make adjustments
-    if include_self == False:
+    if not include_self:
         objects = corr.loc[var].nlargest(top_n_feats + 1).index[1 : top_n_feats + 1]
     else:
         objects = corr.loc[var].nlargest(top_n_feats).index
@@ -63,7 +63,7 @@ def correlation_bar_graph(
     # Plot bars, labels, and titles
     plt.barh(y_pos, values, align="center", alpha=0.7)
     plt.yticks(y_pos, objects, fontsize=9)
-    if negative_corrs == True:
+    if negative_corrs:
         plt.xlabel("Negative Correlation")
     else:
         plt.xlabel("Correlation")
@@ -246,7 +246,7 @@ def sort_common_words(text, ngram=1, n=10, tfidf=False):
     from scipy.sparse import csr_matrix
 
     # Transform data into vectorized word binary counts or tf-idf counts
-    if tfidf == True:
+    if tfidf:
         vect = TfidfVectorizer(
             lowercase=True,
             analyzer="word",
@@ -266,14 +266,16 @@ def sort_common_words(text, ngram=1, n=10, tfidf=False):
     vocab = vect.get_feature_names()
     num_entries = word_counts.shape[0]
 
-    # Convert sparse matrix to a 1-column pandas DataFrame then to a pandas Series
+    # Convert sparse matrix to a 1-column pandas DataFrame then to a pandas
+    # Series
     word_counts = word_counts.sum(axis=0)
     word_counts = pd.DataFrame(word_counts)
     word_counts.columns = vocab
     word_counts = word_counts.transpose()
     word_counts = word_counts.iloc[:, 0]
 
-    # Sort by word's prevalence and convert to proportion of text entires that includes the word
+    # Sort by word's prevalence and convert to proportion of text entires that
+    # includes the word
     top_n_words = word_counts.nlargest(n) / num_entries
 
     return top_n_words
@@ -296,10 +298,10 @@ def analyze_word_similarity(text, labels, ngram=1, n=1000, relative=False, tfidf
         top_n_diff_true: difference in proportion where true is greater than false for top n words (only words common to both)
         top_n_diff_false: difference in proportion where false is greater than true for top n words (only words common to both)
     """
-    top_n_words_true = sort_common_words(text[labels == True], ngram, n, tfidf)
+    top_n_words_true = sort_common_words(text[labels], ngram, n, tfidf)
     top_n_words_false = sort_common_words(text[labels == False], ngram, n, tfidf)
 
-    if relative == True:
+    if relative:
         top_n_diff_true = (
             (top_n_words_true - top_n_words_false) / top_n_words_true * 100
         )
@@ -474,7 +476,8 @@ def get_color_list(n):
 #     plt.savefig('images/suburban segment2 suburban.png',bbox_inches='tight')
 #     plt.show()
 
-# def horizontal_bar(data,segments=None,labels=[],legends=[],title=None,xlabel=None,save_name=None):
+# def
+# horizontal_bar(data,segments=None,labels=[],legends=[],title=None,xlabel=None,save_name=None):
 
 # 	'''
 # 	Example input:

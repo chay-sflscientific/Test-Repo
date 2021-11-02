@@ -34,30 +34,30 @@ def _validate_inputs(func):
 
         errors = {}
 
-        if type(df) is not pd.DataFrame:
+        if not isinstance(df, pd.DataFrame):
             errors["df"] = "The DataFrame passed is not a DataFrame."
 
-        if type(train) is not float:
+        if not isinstance(train, float):
             errors["train"] = "train must be of type float."
         if train <= 0.0 or train > 1.0:
             errors["train"] = "train must be 0.0 < train <= 1.0."
-        if type(val) is not float:
+        if not isinstance(val, float):
             errors["val"] = "val must be of type float."
         if val <= 0.0 or val > 0.99:
             errors["val"] = "val must be 0.0 < val <= 0.99."
-        if type(test) is not float:
+        if not isinstance(test, float):
             errors["test"] = "test must be of type float."
         if test <= 0.0 or test > 0.99:
             errors["test"] = "test must be 0.0 < test <= 0.99."
 
-        if type(group) is not list:
+        if not isinstance(group, list):
             errors["group"] = "group must be a list"
         for elem in group:
-            if type(elem) is not str:
+            if not isinstance(elem, str):
                 errors["group"] = "Not all elems in group are strings."
                 break
 
-        if type(seed) is not int:
+        if not isinstance(seed, int):
             errors["seed"] = "The seed must be an int."
 
         if len(errors) > 0:

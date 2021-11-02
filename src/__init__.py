@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+import ast
+from sys import path as sys_path
+from os import path as os_path
+from pathlib import Path
 import os
 import sys
 
@@ -13,9 +17,6 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-from pathlib import Path
-from os import path as os_path
-from sys import path as sys_path
 
 # ------------------------------------------------------------------------------#
 #                                 LOGGER                                   #
@@ -49,8 +50,6 @@ config = toml.load(CONFIG_LIST)
 # ------------------------------------------------------------------------------#
 #                                Config Parser                                 #
 # ------------------------------------------------------------------------------#
-
-import ast
 
 
 def config_parser(input):

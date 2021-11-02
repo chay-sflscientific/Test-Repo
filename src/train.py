@@ -6,6 +6,15 @@ just for illustrating basic SFL Template features.
 Update this when you start working on your own SFL project.
 """
 
+from src.models.trainer import ExampleTrainer
+from src.models.builder import ExampleBuilder
+from src.processes.transforms import (
+    ExampleTransform,
+)
+from src.processes.processor import ExampleProcessor
+from src.datasets.dataset import ExampleDataset
+from src.classes.transform import Transforms
+from src import logger, config
 import os
 import sys
 
@@ -18,21 +27,11 @@ warnings.filterwarnings("ignore")
 #                                 LOGGER                                   #
 # ------------------------------------------------------------------------------#
 
-from src import logger, config
 
 # ------------------------------------------------------------------------------#
 #                                 MODULE                                   #
 # ------------------------------------------------------------------------------#
 
-from src.classes.transform import Transforms
-from src.datasets.dataset import ExampleDataset
-from src.processes.processor import ExampleProcessor
-from src.processes.transforms import (
-    ExampleTransform,
-)
-
-from src.models.builder import ExampleBuilder
-from src.models.trainer import ExampleTrainer
 
 # ------------------------------------------------------------------------------#
 #                                 PARAMETERS                                   #
@@ -79,22 +78,22 @@ def train():
     Create the project's training pipeline.
     """
 
-    ## DS Initialization Placeholder
+    # DS Initialization Placeholder
     example_ds = ExampleDataset.from_path(
         path=RAW_DIR,
         training=True,
     )
     logger.info("[Training]Dataset Initlization Completed.")
 
-    ## Data Pipeline Process Placeholder
+    # Data Pipeline Process Placeholder
     example_ds = ExampleProcessor.process(example_ds, tfms=PREPROCESS_TRANSFORMS)
     logger.info("[Training]Dataset Processing Completed.")
 
-    ## Model Initialization Placeholder
+    # Model Initialization Placeholder
     example_model = ExamplelBuilder.build(config=MODEL_CONFIG)
     logger.info("[Training]Model Initliazation Completed.")
 
-    ## Training Placeholder
+    # Training Placeholder
     logger.info("[Training]Start Training.....")
     train_ds = example_ds.train_set
     validate_ds = example_ds.validation_set
