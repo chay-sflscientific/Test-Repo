@@ -6,25 +6,24 @@ just for illustrating basic SFL Template features.
 Update this when you start working on your own SFL project.
 """
 
+from src import config
+from src import logger
+from src.classes.datasets import Datasets, CSVDataSets
+import pandas as pd
 import warnings
 
 warnings.filterwarnings("ignore")
-
-import pandas as pd
-from src.classes.datasets import Datasets, CSVDataSets
 
 
 # ------------------------------------------------------------------------------#
 #                                 LOGGER                                   #
 # ------------------------------------------------------------------------------#
 
-from src import logger
 
 # ------------------------------------------------------------------------------#
 #                                 CONFIG                                   #
 # ------------------------------------------------------------------------------#
 
-from src import config
 
 # ------------------------------------------------------------------------------#
 #                                 PARAMETERS                                   #
@@ -80,7 +79,7 @@ class ExampleDataset(CSVDataSets):
 
         """
 
-        ###########################################################################
+        #######################################################################
         # Here you can find an example Sanity Check function.
         #
         # Delete this when you start working on your own SFL project

@@ -26,8 +26,8 @@ class TestInferencePipeline:
 
     def test_inference_config_section(self, project_config):
         """Test necessary config sections"""
-        assert config.get("DATA") != None
-        assert config.get("INFERENCE") != None
+        assert config.get("DATA") is not None
+        assert config.get("INFERENCE") is not None
 
     def test_inference_pipeline(self):
         """Inference Pipeline Integration Test"""

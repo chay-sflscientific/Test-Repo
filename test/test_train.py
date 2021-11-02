@@ -25,12 +25,12 @@ class TestTrainingPipeline:
     """Training Pipeline Integration Test"""
 
     def test_training_config_section(self, project_config):
-        assert config.get("DATA") != None
-        assert config.get("MODEL") != None
-        assert config.get("TRAIN") != None
+        assert config.get("DATA") is not None
+        assert config.get("MODEL") is not None
+        assert config.get("TRAIN") is not None
 
     def test_credential_config_section(self, project_config):
-        assert config.get("S3") != None
+        assert config.get("S3") is not None
 
     def test_training_pipeline(self):
         train()

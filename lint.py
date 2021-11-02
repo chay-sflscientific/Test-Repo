@@ -2,6 +2,7 @@ import sys
 import shlex
 import subprocess
 
+
 def call(cmd=["string", "string"], **kwargs):  # pragma: no cover
     """Run a subprocess command and exit if it fails."""
     print(" ".join(shlex.quote(c) for c in cmd))

@@ -98,7 +98,7 @@ class Transforms:
 
 
 def compose(x, y=None, fns=[], **kwargs):
-    """ Apply a collection of transformation functions :fns: to dataset """
+    """Apply a collection of transformation functions :fns: to dataset"""
 
     for fn in fns:
         x, y = fn(x, y)

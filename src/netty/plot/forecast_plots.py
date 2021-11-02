@@ -7,7 +7,6 @@ warnings.filterwarnings("ignore")
 
 
 def prophet_score_scatter_plot(scores_dict):
-
     """
     prophet score scatter plot
 

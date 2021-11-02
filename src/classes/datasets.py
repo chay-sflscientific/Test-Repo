@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from src.classes.errors import DataSetIOError
 import os
 import sys
 import copy
@@ -23,7 +24,6 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-from src.classes.errors import DataSetIOError
 
 # ------------------------------------------------------------------------------#
 #                                 LOGGER                                   #
@@ -338,7 +338,7 @@ class CSVDataSets(Datasets):
         """
         Return train/val/test dataset
         """
-        if cls != None:
+        if cls is not None:
             _df = self._dataset.loc[self._dataset["split"] == cls]
         else:
             _df = self._dataset

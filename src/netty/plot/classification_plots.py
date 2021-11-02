@@ -25,6 +25,8 @@
 
 
 """
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -165,7 +167,6 @@ def bagging_histogram(truths, preds, cut_off=-1):
 def probability_distribution(
     df, truth_col, class_column_dict, xlim=(0, 1), ylim=(0, 10), normed=False, fill=True
 ):
-
     """
     Probability histogram split by class
 
@@ -271,9 +272,9 @@ def logit_sp(truth, predicted_probability, default_class, xlim=(0, 1)):
         preds = copy.deepcopy(predicted_probability)
         _make_logit(i, preds, labels)
 
-    ## Sensitivity: true positive rate -> propotion of positives that are correctly identified as such (percentage of sick people who are correctly identified as sick)
-    ## Specificity: true negative rate -> propotion of negatives that are correctly identified as such (percentage of healthy people who are correctly identified as healthy)
-    ## A perfect classifier would have 100% sensitivity and specificity
+    # Sensitivity: true positive rate -> propotion of positives that are correctly identified as such (percentage of sick people who are correctly identified as sick)
+    # Specificity: true negative rate -> propotion of negatives that are correctly identified as such (percentage of healthy people who are correctly identified as healthy)
+    # A perfect classifier would have 100% sensitivity and specificity
     fig = plt.figure(1, figsize=(5, 5))
     plt.plot(bins, sens, label="Sensitivity")
     plt.plot(bins, spec, label="Specificity")
@@ -427,8 +428,7 @@ def accuracy_cut(
     class_dict, _ = _generate_class_dicts(set(truth))
     colors = [colormap(i) for i in np.linspace(0, 0.9, len(class_dict.keys()))]
 
-    class_names = list(class_dict.keys())
-    class_names.sort()
+    class_names = sorted(class_dict.keys())
 
     stats = ["f1_score", "precision_score", "recall_score"]
 
@@ -631,8 +631,7 @@ def roc(
     class_dict, _ = _generate_class_dicts(set(truth))
     colors = [colormap(i) for i in np.linspace(0, 0.9, len(class_dict.keys()))]
 
-    class_names = list(class_dict.keys())
-    class_names.sort()
+    class_names = sorted(class_dict.keys())
 
     auc_max = -1
     auc_min = 10000
@@ -749,8 +748,7 @@ def delta_roc(
     class_dict, _ = _generate_class_dicts(set(truth))
     colors = [colormap(i) for i in np.linspace(0, 0.9, len(class_dict.keys()))]
 
-    class_names = list(class_dict.keys())
-    class_names.sort()
+    class_names = sorted(class_dict.keys())
 
     auc_max = -1
     auc_min = 10000
@@ -893,18 +891,17 @@ def statistic_trend_bags(
     import pandas as pd
 
     colormap = plt.cm.nipy_spectral
-    if type(dfs) == pd.core.frame.DataFrame:
+    if isinstance(dfs, pd.core.frame.DataFrame):
         dfs = [dfs]
 
     # get the labels of the class
-    labels = dfs[0][truth_col].unique()
-    labels.sort()
+    labels = sorted(dfs[0][truth_col].unique())
     colors = [colormap(i) for i in np.linspace(0, 0.95, len(labels) + 1)]
 
     original = column_list[0]
     column_list = column_list[1:]
 
-    if type(stats) == str:
+    if isinstance(stats, str):
         stats = [stats]
 
     fig, ax = plt.subplots(1, figsize=(5, 5))
@@ -927,9 +924,8 @@ def statistic_trend_bags(
                     df[truth_col], df[original], average=None, labels=labels
                 )
             elif stat == "accuracy_score":
-                st_orig = [
-                    accuracy_score(df[truth_col], df[original])
-                ]  # np.diagonal(confusion_matrix(df[truth_col], df[original]))/ (np.diagonal(confusion_matrix(df[truth_col], df[truth_col]))+1e-10)
+                # np.diagonal(confusion_matrix(df[truth_col], df[original]))/ (np.diagonal(confusion_matrix(df[truth_col], df[truth_col]))+1e-10)
+                st_orig = [accuracy_score(df[truth_col], df[original])]
 
             else:
                 raise ValueError()
@@ -965,9 +961,8 @@ def statistic_trend_bags(
                         df[truth_col], df[c], average=None, labels=labels
                     )
                 elif stat == "accuracy_score":
-                    st = [
-                        accuracy_score(df[truth_col], df[c])
-                    ]  # np.diagonal(confusion_matrix(df[truth_col], df[original]))/ (np.diagonal(confusion_matrix(df[truth_col], df[truth_col]))+1e-10)
+                    # np.diagonal(confusion_matrix(df[truth_col], df[original]))/ (np.diagonal(confusion_matrix(df[truth_col], df[truth_col]))+1e-10)
+                    st = [accuracy_score(df[truth_col], df[c])]
                 else:
                     raise ValueError()
                 temp_vals.append(st)
@@ -1172,16 +1167,16 @@ def confusion_matrix(
 
     # If passed is not list, try to convert from pd.Series.  If
     # that fails, safely default.
-    if type(truth) is not list:
+    if not isinstance(truth, list):
         try:
             truth = truth.tolist()
-        except:
+        except BaseException:
             print("ERROR: truth was not list or Series!")
             return 0
-    if type(predicted) is not list:
+    if not isinstance(predicted, list):
         try:
             predicted = predicted.tolist()
-        except:
+        except BaseException:
             print("ERROR: predicted was not list or Series!")
             return 0
 
@@ -1212,7 +1207,8 @@ def confusion_matrix(
 
     res.set_clim(clim[0], clim[1])
 
-    conf_mat = confusion_matrix(truth, predicted)  # refresh for values on conf_mat plot
+    # refresh for values on conf_mat plot
+    conf_mat = confusion_matrix(truth, predicted)
     # normalise
     if norm:
         if is_recall:
@@ -1577,7 +1573,9 @@ def delta_rpc(
 
     # delta_accuracy = accuracy_score(truth, predicted_2) - accuracy_score(truth, predicted)
 
-    # delta_accuracy = #np.diagonal(confusion_matrix(truth, predicted_2)- confusion_matrix(truth, predicted)) / (np.diagonal(confusion_matrix(truth, truth))+1e-10)
+    # delta_accuracy = #np.diagonal(confusion_matrix(truth, predicted_2)-
+    # confusion_matrix(truth, predicted)) /
+    # (np.diagonal(confusion_matrix(truth, truth))+1e-10)
 
     print(recall_score(truth, predicted_2, average=None))
     print(recall_score(truth, predicted, average=None))
@@ -1590,7 +1588,8 @@ def delta_rpc(
         delta_precision,
         marker="o",
         s=200,
-        c=y_counts_train,  # recall_score(truth, predicted_2,average=None)  #_train #y_counts
+        c=y_counts_train,
+        # recall_score(truth, predicted_2,average=None)  #_train #y_counts
         cmap=plt.get_cmap("Spectral")
         # , norm= LogNorm(np.min(y_counts_train),
         #   vmax=np.max(y_counts_train))#, cmap='PuBu_r'

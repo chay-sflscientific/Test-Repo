@@ -5,6 +5,12 @@ just for illustrating basic SFL Template features.
 Update this when you start working on your own SFL project.
 """
 
+from src import config
+from src import logger
+from src.classes.transform import Transform, TfmType
+from sys import path as sys_path
+from os import path as os_path
+from pathlib import Path
 import re
 import os
 import ast
@@ -20,23 +26,15 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-from pathlib import Path
-from os import path as os_path
-from sys import path as sys_path
-
-from src.classes.transform import Transform, TfmType
-
 
 # ------------------------------------------------------------------------------#
 #                                 LOGGER                                   #
 # ------------------------------------------------------------------------------#
 
-from src import logger
 
 # ------------------------------------------------------------------------------#
 #                                 CONFIG                                   #
 # ------------------------------------------------------------------------------#
-from src import config
 
 
 # ------------------------------------------------------------------------------#

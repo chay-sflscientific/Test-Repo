@@ -6,6 +6,8 @@ just for illustrating basic SFL Template features.
 Update this when you start working on your own SFL project.
 """
 
+from src import logger
+from src.models.model import ExampleModel
 import re
 import os
 import ast
@@ -17,14 +19,11 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-from src.models.model import ExampleModel
 
 # ------------------------------------------------------------------------------#
 #                                 LOGGER                                   #
 # ------------------------------------------------------------------------------#
 
-
-from src import logger
 
 # ------------------------------------------------------------------------------#
 #                                MODEL BUILDER                                  #

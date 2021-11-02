@@ -1,18 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-  ___ _    ___ _____ ___ 
+  ___ _    ___ _____ ___
  | _ \ |  / _ \_   _/ __|
  |  _/ |_| (_) || | \__ \
  |_| |____\___/ |_| |___/
-                         
-																	
+
+
 	SFL validation module
-	
+
 		- generic validation module
-		
+
 	SFL Scientific 14.Jan.18
 """
+
 
 def feat_importance(gbm, feature_list, number=15, flag=True):
     """
@@ -69,4 +70,3 @@ def feat_importance(gbm, feature_list, number=15, flag=True):
     plt.title("Feature Importance of all Features")
     plt.ylim([0, np.max(y) + 1.4])
     plt.show()
-

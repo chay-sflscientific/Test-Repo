@@ -18,7 +18,7 @@ import numpy as np
     the imput dataframe should have a period_id column (float) that indicates which BASE PERIOD it belongs to.
     For example, a dataframe contains 80 weeks (4 months) worth of data. If week is decided to be the base period, there
     should be a period_id column with values range from 1 to 80, where entries belong to the same week have the same number.
-    Similarly, if month is decided to be the base period, the period_id column should now contain only numbers 1 to 4. Entries belong to 
+    Similarly, if month is decided to be the base period, the period_id column should now contain only numbers 1 to 4. Entries belong to
     the same month will have the same number.
     The period_id should start at 1 and the dataframe should be sorted so that the period_id column is in ascending order
 
@@ -44,7 +44,8 @@ def _generate_splits(df, pps_train, pps_test, period_id, win_type, col_name):
 
     total_number_periods = int(np.max(period_id))
     if pps_test is not None:
-        # to avoid the last training set has no matching test data, keep the test data first
+        # to avoid the last training set has no matching test data, keep the
+        # test data first
         total_number_periods = total_number_periods - pps_test
 
     n_splits = total_number_periods // pps_train
@@ -115,7 +116,7 @@ def _validate_inputs(func):
     ):
 
         errors = {}
-        if type(df) is not pd.DataFrame:
+        if not isinstance(df, pd.DataFrame):
             errors["df"] = "The df is not of type pd.DataFrame"
 
         if period_id not in df.columns.values.tolist():
@@ -133,7 +134,7 @@ def _validate_inputs(func):
 
         try:
             str(col_name)
-        except:
+        except BaseException:
             errors["col_name"] = "The passed value cannot be made a str."
 
         if len(errors) > 0:
@@ -191,7 +192,7 @@ def forecasting_split(
         period_id = df[period_id].values.tolist()
         try:
             period_id = [float(x) for x in period_id]
-        except:
+        except BaseException:
             raise Exception(
                 "Elements in passed index column contains "
                 + "values that cannot be cast to float."
